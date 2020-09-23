@@ -2,54 +2,12 @@ from _ast import Lambda
 
 from matplotlib import pyplot as plt
 import math
+import numpy as np
 
-x = [0.16,
-     0.17,
-     0.18,
-     0.19,
-     0.2,
-     0.21,
-     0.22,
-     0.23,
-     0.24,
-     0.25,
-     0.26,
-     0.27,
-     0.28,
-     0.29,
-     0.3,
-     0.31,
-     0.32,
-     0.33,
-     0.34,
-     0.35,
-     0.36,
-     0.37,
-     0.38,
-     0.39,
-     0.4,
-     0.41,
-     0.42,
-     0.43,
-     0.44,
-     0.45,
-     0.46,
-     0.47,
-     0.48,
-     0.49,
-     0.5,
-     0.51,
-     0.52,
-     0.53,
-     0.54,
-     0.55,
-     0.56,
-     0.57,
-     0.58,
-     0.59,
-     0.6,
-     0.61,
-     ]
+from scipy.optimize import curve_fit
+
+x = np.linspace(0.16, 0.61, num=46)
+
 
 y = [-1.526,
      -1.658,
@@ -98,9 +56,26 @@ y = [-1.526,
      -5.327,
      -5.383,
      ]
+
+y2 = -8.7507*x-0.2375
+
+# opt, pcov = curve_fit(gaus, x1, y1, p0=[1, mean, sigma])
+# a, mu, sigma = popt
+# delta_a, delta_mu, delta_sigma = np.sqrt(np.diag(pcov))
+# # R^2
+# residuals = y1 - gaus(x1, *popt)
+# ss_res = np.sum(residuals**2)
+# ss_tot = np.sum((y1-np.mean(y1))**2)
+# r_squared = 1 - (ss_res / ss_tot)
+
+
 plt.figure(1)
-plt.plot(x, y, marker='o', markersize=3, label='Vitesse par rapport au temps')
+plt.plot(x, y, color='k', marker='o', markersize=3, linewidth=0, label='Vitesse par rapport au temps')
+plt.plot(x, y2, color="blue", label='Équation résultante des coordonées')
 plt.xlabel('Temps (s)')
-plt.ylabel('Vitesse (Vy)')
+plt.ylabel('V$_y$ (m/s)')
 plt.legend()
+plt.grid()
+plt.text(0.445, -2.25,'$y = -8.7507x-0.2375$', horizontalalignment='center',
+     verticalalignment='center')
 plt.savefig('num4.jpg', dpi=600)
