@@ -71,7 +71,7 @@ y2 = -8.7507*x-0.2375
 
 plt.figure(1)
 plt.plot(x, y, color='k', marker='o', markersize=3, linewidth=0, label='Vitesse par rapport au temps')
-plt.plot(x, y2, color="blue", label='Équation résultante des coordonées')
+plt.plot(x, y2, color="blue", label='Équation résultante des coordonnées')
 plt.xlabel('Temps (s)')
 plt.ylabel('V$_y$ (m/s)')
 plt.legend()
